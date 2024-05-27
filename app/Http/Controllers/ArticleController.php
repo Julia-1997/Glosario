@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Recoge de la BD todos los artículos paginados y los devuelve a la vista index
      */
     public function index()
     {
@@ -21,6 +22,9 @@ class ArticleController extends Controller
 
     }
 
+    /**
+     * Recoge de la BD todos los artículos paginados que comienzan con una letra seleccionada y los devuelve a la vista index
+     */
     public function filterByLetter($letter)
     {
         $articles = Article::where('term', 'like', $letter . '%')->paginate(5);
@@ -29,15 +33,17 @@ class ArticleController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Recoge de la BD todos las categorías y las devuelve a la vista del formulario para añadir artículo
      */
     public function create()
     {
-        return view ('articles.create');
+        $categories = Category::all();
+        return view('articles.create', compact('categories'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Valida los datos del formulario, crea o busca una referencia y una imagen, inserta el artículo en la BD y las categorías asociadas a ese artículo
+     * @param $request campos que provienen del formulario
      */
     public function store(Request $request)
     {
@@ -54,6 +60,7 @@ class ArticleController extends Controller
             'reference_date' => 'required',
             'reference_link' => 'required',
             'image' => 'required',
+            'category_ids' => 'required|array'
         ]);
 
         // // Añadir o encontrar referencia
@@ -72,6 +79,7 @@ class ArticleController extends Controller
         ];
         $image = Image::firstOrCreate($imageData);
         
+
         
         // Crear el artículo
         $article = Article::create([
@@ -85,32 +93,40 @@ class ArticleController extends Controller
             'image_id' => $image->id,
         ]);
 
+        $article->categoria()->sync($request->input('category_ids'));
+
         //redirección y mensaje de éxito
         return redirect()->route('articulos.index')
             ->with('success', 'Artículo insertado en la BD');        
     }
 
     /**
-     * Display the specified resource.
+     * Recoge de la BD todos los datos asociados a un artículo concreto y los manda a la vista show
+     * @param $id identificación del artículo del que se quieren ver detalles 
      */
     public function show($id)
     {
-        $article = Article::with('referencia', 'imagen','categoria')->findOrFail($id);
-        $category = Category::with('articles')->findOrFail($id);
-        return view('articles.show', compact('article', 'category'));
+        $article = Article::with('referencia', 'imagen')->findOrFail($id);
+        $article->load('categoria'); //cargar categorías asociadas 
+        return view('articles.show', compact('article'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Recoge de la BD todos los datos asociados a un artículo concreto y los manda a la vista edit
+     * @param $id identificación del artículo que se quiere modificar
      */
     public function edit($id)
     {
         $article = Article::with('imagen','referencia')->findOrFail($id);
-        return view('articles.edit', compact('article'));
+        $article->load('categoria'); //cargar categorías asociadas 
+        $categories = Category::all();
+        return view('articles.edit', compact('article','categories'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Valida los datos del formulario, crea o busca una referencia y una imagen, inserta el artículo en la BD y las categorías asociadas a ese artículo
+     * @param $request campos que provienen del formulario
+     * @param $id identificador del artículo que se quiere modificar
      */
     public function update(Request $request, int $id)
     {
@@ -119,15 +135,16 @@ class ArticleController extends Controller
          $request->validate([
             'term' => 'required|string|min:2|max:100'.$article->id,
             'definition' => 'required|max:1000',
-            'description' => 'required',
-            'meaning' => 'required|max:255',
-            'example' => 'required|max:1000',
-            'more_information' => 'required',
+            'description' => '|max:1000',
+            'meaning' => 'max:255',
+            'example' => 'max:1000',
+            'more_information' => 'max:1000',
             'reference_title' => 'required',
             'reference_author' => 'required',
             'reference_date' => 'required',
             'reference_link' => 'required',
             'image' => 'required',
+            'category_ids' => 'required|array'
         ]);
 
         // // Añadir o encontrar referencia
@@ -159,18 +176,25 @@ class ArticleController extends Controller
             'image_id' => $image->id,
         ]);
 
+        $article->categoria()->sync($request->input('category_ids'));
+
         //redirección y mensaje de éxito
         return redirect()->route('articulos.index')
             ->with('success', 'Artículo actualizado en la BD');      
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina de la BD el artículo seleccionado 
+     * @param $id identificación del artículo que se quiere eliminar
      */
     public function destroy($id)
     {
         $article = Article::findOrFail($id);
-        $article->delete();
+
+        // Eliminar los registros en la tabla pivot article_category
+        $article->categoria()->detach();
+
+        $article->delete(); //borrar artículo
         return redirect()->route('articulos.index')
           ->with('success', 'Artículo borrado de la BD');
     }

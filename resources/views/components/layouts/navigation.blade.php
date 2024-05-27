@@ -20,6 +20,9 @@
       <li class="nav-item">
           <a class="nav-link" href="{{ route('articulos.crear')}}">Añadir un término</a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{{ route('categorias.index')}}">Categorías</a>
+      </li>
       </ul>
     </div>
   </div>

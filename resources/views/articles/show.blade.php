@@ -10,13 +10,17 @@
     <div class="row">
       <div class="col-lg-12">
         <h2 class="bi bi-bookmarks"> {{ $article->term}}</h2>
-        <!-- <span class="badge rounded-pill bg-light text-dark border border-secondary"></span> -->
+
+        @foreach($article->categoria as $category)
+                 <span class="badge rounded-pill bg-light text-dark border border-secondary">{{ $category->name }}</span>
+        @endforeach
+
         <br>
         <br>
         <p class="p-3 my-1 border" id="definitionCSS"> {{ $article->definition}}</p>
         <hr>
         <p class="p-3 my-1"> {{ $article->description}}</p>
-        <img class="img-fluid" src="{{ asset('images/perfil.jpg') }}" alt="Perfil" width="90%" height="80%">
+        <img class="img-fluid" src="{{ asset('images/' . $article->imagen->url) }}" alt="{{$article->imagen->url}}" width="60%" height="70%">
 
         <hr>
 

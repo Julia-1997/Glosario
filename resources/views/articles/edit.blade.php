@@ -76,6 +76,18 @@
                 <input type="text" class="form-control" id="image" name="image" value="{{ $article->referencia ? $article->imagen->url : 'No hay datos' }}">
               </div> 
           </fieldset>  
+          <br>
+          <br>
+          <fieldset>
+            <legend>Categorías asociadas</legend>
+                <div class="form-group">
+                    <select name="category_ids[]" id="category_ids" multiple class="form-control">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+          </fieldset>  
       </div>
         <!-- Posibles errores -->
         @if ($errors->any())
