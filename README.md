@@ -5,26 +5,6 @@
 <p align="center"> Proyecto personal en el que se presenta un glosario de términos relacionados con el grado superior de desarrollo web.</p>
 
 
-<!-- índice del README -->
-<details>
-  <summary>Tabla de contenidos</summary>
-  <ol>
-    <li>
-      <a href="##objetivo">Objetivo del proyecto</a>
-    </li>
-    <li>
-      <a href="##tecnologías-empleadas">Tecnologías empleadas</a>
-    </li>
-    <li><a href="##estructura">Estructura del proyecto</a></li>
-    <li><a href="##funcionalidades">Funcionalidades del proyecto</a></li>
-    <li><a href="##requisitos-previos">Pre-requisitos</a></li>
-    <li><a href="##despliegue">Despliegue</a></li>
-  </ol>
-</details>
-
-
-
-
 <!-- Objetivo-->
 ## Objetivo 
 Plasmar todos los conocimientos adquiridos durante el curso de Desarrollo de Aplicaciones Web (DAW), creando un glosario interativo y dinámico empleando el framework Laravel aprendido en la asignatura Desarrollo de aplicaciones web en entorno servidor.
@@ -257,4 +237,4 @@ Para desplegar el proyecto en local:
  php artisan serve
   ```
 ---
-:large_orange_diamond: Autora: [Julia-1997](https://github.com/Julia-1997)
+:large_orange_diamond: Proyecto creado por: [Julia-1997](https://github.com/Julia-1997)
