@@ -23,10 +23,14 @@
           <h6>-- Mayo, 2024</h6>
             <p>Proyecto personal en el que se presenta un glosario sobre los términos aprendidos en el grado superior de desarrollo web.</p>
             <ul>
-              <li><b>Términos:</b> vista que muestra todos los términos y definiciones de la base de datos. Se pueden filtrar los resultados que se muestran por letra del abecedario y ver los detalles de cada artículo.</li>
-              <li><b>Ver detalles:</b> vista que muestra toda la información disponible sobre un artículo concreto. Además permite editar el artículo y borrarlo.</li>
-              <li><b>Añadir un término:</b> vista que muestra un formulario para añadir un artículo.</li>
-
+              <li><b>Términos:</b> Vista que muestra todos los términos y definiciones almacenados en la base de datos. Los usuarios pueden filtrar los resultados por letra del abecedario y acceder a los detalles completos de cada término.</li>
+              <li><b>Ver detalles:</b> Esta vista ofrece información detallada sobre un término específico. Incluye opciones para editar el término existente o eliminarlo completamente de la base de datos.</li>
+              <li><b>Modificar un término:</b> Vista que proporciona un formulario con los datos de un término y su referencia para poder modificar un artículo.</li>
+              <li><b>Eliminar un término:</b> Permite borrar un término de la base de datos.</li>
+              <li><b>Añadir un término:</b> Proporciona un formulario fácil de usar para agregar nuevos términos a la base de datos.</li>
+              <li><b>Categorías:</b> Vista que muestra todos las categorías almacenadas en la base de datos. Los usuarios pueden añadir y eliminar categorías</li>
+              <li><b>Eliminar una categoría:</b> Permite borrar una categoría de la base de datos.</li>
+              <li><b>Añadir una categoría:</b> Permite añadir una categoría de la base de datos.</li>
             </ul>
       </div>
   </div>

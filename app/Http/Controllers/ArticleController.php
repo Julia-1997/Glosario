@@ -134,15 +134,15 @@ class ArticleController extends Controller
          $article = Article::findOrFail($id);
          $request->validate([
             'term' => 'required|string|min:2|max:100'.$article->id,
-            'definition' => 'required|max:1000',
-            'description' => '|max:1000',
-            'meaning' => 'max:255',
-            'example' => 'max:1000',
-            'more_information' => 'max:1000',
-            'reference_title' => 'required',
-            'reference_author' => 'required',
-            'reference_date' => 'required',
-            'reference_link' => 'required',
+            'definition' => 'required|min:2||max:1000',
+            'description' => 'min:2||max:1000',
+            'meaning' => 'min:2|max:255',
+            'example' => 'min:2|max:1000',
+            'more_information' => 'min:2|max:1000',
+            'reference_title' => 'required|min:2',
+            'reference_author' => 'required|min:2',
+            'reference_date' => 'required|min:2',
+            'reference_link' => 'required|min:2',
             'image' => 'required',
             'category_ids' => 'required|array'
         ]);

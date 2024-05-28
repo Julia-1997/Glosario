@@ -40,6 +40,16 @@
                <input type="text" class="form-control" id="name" name="name" required>
              </div>
              <br>
+               <!-- Posibles errores -->
+        @if ($errors->any())
+                       <div class="alert alert-danger">
+                           <ul>
+                               @foreach ($errors->all() as $error)
+                                   <li>{{ $error }}</li>
+                               @endforeach
+                           </ul>
+                       </div>
+                   @endif
   <button type="submit" class="btn btn-success bi bi-journal-plus"> Añadir</button>
            </form>
 

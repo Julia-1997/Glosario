@@ -87,6 +87,16 @@
                 </div>
           </fieldset>  
       </div>
+        <!-- Posibles errores -->
+        @if ($errors->any())
+                       <div class="alert alert-danger">
+                           <ul>
+                               @foreach ($errors->all() as $error)
+                                   <li>{{ $error }}</li>
+                               @endforeach
+                           </ul>
+                       </div>
+                   @endif
   </div>
   <button type="submit" class="btn btn-success bi bi-journal-plus"> Añadir</button>
              <a href="{{ route('articulos.index') }}" class="btn btn-danger bi bi-journal-minus"> Cancelar</a>

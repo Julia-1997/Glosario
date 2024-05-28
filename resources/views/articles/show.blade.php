@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h2 class="bi bi-bookmarks"> {{ $article->term}}</h2>
-
+          <!--Mostrar categorías en formato span-->
         @foreach($article->categoria as $category)
                  <span class="badge rounded-pill bg-light text-dark border border-secondary">{{ $category->name }}</span>
         @endforeach
@@ -19,9 +19,21 @@
         <br>
         <p class="p-3 my-1 border" id="definitionCSS"> {{ $article->definition}}</p>
         <hr>
-        <p class="p-3 my-1"> {{ $article->description}}</p>
-        <img class="img-fluid" src="{{ asset('images/' . $article->imagen->url) }}" alt="{{$article->imagen->url}}" width="60%" height="70%">
-
+        <p class="p-3 my-1"> 
+            <ul>
+              <!--Si en la descripción hay una etiqueta mark que se liste el contenido-->
+            @foreach(explode("<mark>", $article->description) as $line)
+            @if (!$loop->first) <!--Eliminar primer listado que aparece vacío-->
+                <li>{{ $line }}</li> 
+            @endif
+        @endforeach
+            </ul>
+        </p>
+        <p class="mt-4 p-5 bg-muted rounded border"><code>{{ $article->example}}</code></p>
+        <p class="p-3 my-1"> {{ $article->more_information}}</p>
+        
+        <img class="img-fluid" src="{{ asset('images/' . $article->imagen->url) }}" alt="{{$article->imagen->url}}" width="70%" height="70%">
+        <p class="p-3 my-1"> {{ $article->meaning}}</p>
         <hr>
 
             <div class="d-flex justify-content-between align-items-center w-100">
