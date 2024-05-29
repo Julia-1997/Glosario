@@ -71,10 +71,6 @@
                 <input type="text" class="form-control" id="reference_link" name="reference_link" value="{{ $article->referencia ? $article->referencia->link : 'No hay datos' }}">
               </div>
               <br>
-              <div class="form-group">
-                <label for="image">Enlace imagen</label>
-                <input type="text" class="form-control" id="image" name="image" value="{{ $article->referencia ? $article->imagen->url : 'No hay datos' }}">
-              </div> 
           </fieldset>  
           <br>
           <br>

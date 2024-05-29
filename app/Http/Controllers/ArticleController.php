@@ -59,11 +59,11 @@ class ArticleController extends Controller
             'reference_author' => 'required',
             'reference_date' => 'required',
             'reference_link' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_ids' => 'required|array'
         ]);
 
-        // // Añadir o encontrar referencia
+        // Añadir o encontrar referencia
         $referenceData = [
             'title' => $request->input('reference_title'),
             'author' => $request->input('reference_author'),
@@ -73,14 +73,16 @@ class ArticleController extends Controller
 
         $reference = Reference::firstOrCreate($referenceData);
 
-        // // Añadir o encontrar imagen
-        $imageData = [
-            'url' => $request->input('image')
-        ];
-        $image = Image::firstOrCreate($imageData);
-        
+        //Almacenar la imagen cargada en el directorio público carpeta images
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
-        
+        // Asociar variable imageName al campo url de la BD
+        $imageData = [
+            'url' => $imageName
+        ];
+        $image = Image::firstOrCreate($imageData); //Añadir la imagen en la BD
+
         // Crear el artículo
         $article = Article::create([
             'term' => $request->input('term'),
@@ -99,6 +101,14 @@ class ArticleController extends Controller
         return redirect()->route('articulos.index')
             ->with('success', 'Artículo insertado en la BD');        
     }
+
+
+   
+
+   
+
+
+
 
     /**
      * Recoge de la BD todos los datos asociados a un artículo concreto y los manda a la vista show
@@ -143,7 +153,6 @@ class ArticleController extends Controller
             'reference_author' => 'required|min:2',
             'reference_date' => 'required|min:2',
             'reference_link' => 'required|min:2',
-            'image' => 'required',
             'category_ids' => 'required|array'
         ]);
 
@@ -157,13 +166,6 @@ class ArticleController extends Controller
 
         $reference = Reference::firstOrCreate($referenceData);
 
-        // // Añadir o encontrar imagen
-        $imageData = [
-            'url' => $request->input('image')
-        ];
-        $image = Image::firstOrCreate($imageData);
-        
-        
         // Crear el artículo
         $article->update([
             'term' => $request->input('term'),
@@ -173,7 +175,6 @@ class ArticleController extends Controller
             'example' => $request->input('example'),
             'more_information' => $request->input('more_information'),
             'reference_id' => $reference->id,
-            'image_id' => $image->id,
         ]);
 
         $article->categoria()->sync($request->input('category_ids'));

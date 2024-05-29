@@ -11,7 +11,7 @@
         <h2 class="bi bi-bookmark-plus-fill"> Añadir artículo</h2>
          <hr>
             <div class="col-sm-7">
-            <form action="{{ route('articulos.store') }}" method="post">
+            <form action="{{ route('articulos.store') }}" method="post" enctype="multipart/form-data">
              @csrf
              <div class="form-group">
                <label for="term">Término</label>
@@ -71,8 +71,8 @@
               </div>
               <br>
               <div class="form-group">
-                <label for="image">Enlace imagen</label>
-                <input type="text" class="form-control" id="image" name="image">
+              <label for="imagen">Imagen</label>
+              <input type="file" class="form-control" name="image" id="image">
               </div> 
           </fieldset>  
           <br>
