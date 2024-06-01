@@ -17,6 +17,21 @@ class ImagesSeeder extends Seeder
             [
                 'url' => 'defecto.jpg',
             ],
+            [
+                'url' => 'API.png',
+            ],
+            [
+                'url' => 'PHP.png',
+            ],
+            [
+                'url' => 'algoritmo.png',
+            ],
+            [
+                'url' => 'JavaScript.png',
+            ],
+            [
+                'url' => 'Condicionales.png',
+            ],
         ];
 
         DB::table('images')->insert($data);

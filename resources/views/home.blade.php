@@ -11,7 +11,7 @@
             <div class="col-sm-5">
             <h2> Sobre mí</h2>
             <img class="img-fluid" src="{{ asset('images/perfil.jpg') }}" alt="Perfil" width="90%" height="80%">
-            <p>Filóloga, lingüista y desarrolladora web junior | Java, JavaScript, PHP, SQL, Angular, Laravel </p>
+            <p>Filóloga y desarrolladora web junior | Java, JavaScript, PHP, SQL, Angular, Laravel </p>
             <p>Me llamo Julia, soy graduada en Lengua y Literatura Española y actualmente estoy cursando el grado superior de desarrollo de aplicaciones web. Soy una persona muy trabajadora, constante y responsable. Tengo una gran facilidad para trabajar en equipo y he participado en numerosos proyectos en el transcurso de mi formación educativa.</p>
 
             <hr class="d-sm-none">

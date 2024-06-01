@@ -1,0 +1,41 @@
+[33mcommit bea4ce0f7145b1ff9e260052424ec491400c20b0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32midioma[m[33m)[m
+Author: Julia-1997 <juliaprietomurciano@gmail.com>
+Date:   Wed May 29 12:22:57 2024 +0200
+
+    input imagen
+
+[33mcommit 1853f3e05805ce659f0d41e81c23a7545ebcdd48[m
+Author: Julia <115950835+Julia-1997@users.noreply.github.com>
+Date:   Tue May 28 09:04:57 2024 +0200
+
+    Update README.md
+
+[33mcommit 206453b9e5b5a6f9e671ad749004670bca1ec971[m
+Author: Julia <115950835+Julia-1997@users.noreply.github.com>
+Date:   Tue May 28 09:02:03 2024 +0200
+
+    Create README.md
+
+[33mcommit bb12eca2520cfee59769602cac6d440722f6b0a7[m
+Author: Julia-1997 <juliaprietomurciano@gmail.com>
+Date:   Tue May 28 08:50:04 2024 +0200
+
+    asociar categorías a artículos, modificar vista show y mensajes de error para los formularios
+
+[33mcommit 48332654c095227b1d919c23e599b1c148470956[m
+Author: Julia-1997 <juliaprietomurciano@gmail.com>
+Date:   Mon May 27 18:01:03 2024 +0200
+
+    CRUD categories y seeder de prueba
+
+[33mcommit 87f1bc3466612c528e749a48e35295fc2a425465[m
+Author: Julia-1997 <juliaprietomurciano@gmail.com>
+Date:   Sun May 26 15:16:43 2024 +0200
+
+    creación proyecto y CRUD artículos
+
+[33mcommit 1e41503bb6f7df75c9879a681d10c91e974c317f[m
+Author: Julia <115950835+Julia-1997@users.noreply.github.com>
+Date:   Sun May 26 15:03:53 2024 +0200
+
+    Initial commit

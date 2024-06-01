@@ -29,11 +29,22 @@
         @endforeach
             </ul>
         </p>
-        <p class="mt-4 p-5 bg-muted rounded border"><code>{{ $article->example}}</code></p>
-        <p class="p-3 my-1"> {{ $article->more_information}}</p>
+        <!--Mostrar ejemplo en formato código-->
+        @if (!empty($article->example))
+          <p class="mt-4 p-5 bg-muted rounded border"><code>{{ $article->example }}</code></p>
+        @endif
+
+        <!--Mostrar más información-->
+        @if (!empty($article->more_information))
+          <p class="p-3 my-1">{{ $article->more_information }}</p>
+        @endif
         
-        <img class="img-fluid" src="{{ asset('images/' . $article->imagen->url) }}" alt="{{$article->imagen->url}}" width="70%" height="70%">
-        <p class="p-3 my-1"> {{ $article->meaning}}</p>
+        <img class="img-fluid" src="{{ asset('images/' . $article->imagen->url) }}" alt="{{$article->imagen->url}}" width="50%" height="50%">
+       
+        <!--Mostrar acepción-->       
+        @if (!empty($article->meaning) || is_null($article->meaning)) 
+        <p class="p-3 my-1">{{ $article->meaning }}</p> 
+        @endif
         <hr>
 
             <div class="d-flex justify-content-between align-items-center w-100">

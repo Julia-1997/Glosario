@@ -29,6 +29,9 @@ class CategoriesSeeder extends Seeder
             [
                 'name' => 'Base de datos',
             ],
+            [
+                'name' => 'Sistemas informáticos',
+            ],
         ];
 
         DB::table('categories')->insert($data);
